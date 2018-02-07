@@ -708,6 +708,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 __webpack_require__(24)
 
+var root = Object(__WEBPACK_IMPORTED_MODULE_0_redux__["a" /* combineReducers */])({counter: counter, greeting: greeting})
+
 function counter(state = 0, action){
     switch (action.type) {
     case 'INCREMENT':
@@ -719,19 +721,37 @@ function counter(state = 0, action){
     }
 }
 
-let store = Object(__WEBPACK_IMPORTED_MODULE_0_redux__["a" /* createStore */])(counter)
+function greeting(state = "", action){
+    switch (action.type) {
+    case 'HELLO':
+        return "HI"
+    case 'BYE':
+        return "BYE"
+    default:
+        return state
+    }
+}
 
-store.subscribe(() => 
-    console.log(store.getState())
-)
+let store = Object(__WEBPACK_IMPORTED_MODULE_0_redux__["b" /* createStore */])(root)
+
+store.subscribe(() => document.querySelector("#counter").innerHTML = store.getState().counter)
+store.subscribe(() => document.querySelector("#greet").innerHTML = store.getState().greeting)
+
+document.querySelector("#hi").onclick = () => {
+    store.dispatch({type: "HELLO"})
+};
+
+document.querySelector("#bye").onclick = () => {
+    store.dispatch({type: "BYE"})
+};
 
 document.querySelector("#inc").onclick = () => {
     store.dispatch({type: "INCREMENT"})
 };
 
-store.dispatch({type: "INCREMENT"})
-store.dispatch({type: "INCREMENT"})
-
+document.querySelector("#dec").onclick = () => {
+    store.dispatch({type: "DECREMENT"})
+};
 
 
 /***/ }),
@@ -745,8 +765,8 @@ store.dispatch({type: "INCREMENT"})
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__applyMiddleware__ = __webpack_require__(23);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__compose__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__utils_warning__ = __webpack_require__(5);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_0__createStore__["b"]; });
-/* unused harmony reexport combineReducers */
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_0__createStore__["b"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_1__combineReducers__["a"]; });
 /* unused harmony reexport bindActionCreators */
 /* unused harmony reexport applyMiddleware */
 /* unused harmony reexport compose */
@@ -1080,7 +1100,7 @@ function symbolObservablePonyfill(root) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(process) {/* unused harmony export default */
+/* WEBPACK VAR INJECTION */(function(process) {/* harmony export (immutable) */ __webpack_exports__["a"] = combineReducers;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__createStore__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_lodash_es_isPlainObject__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__utils_warning__ = __webpack_require__(5);
