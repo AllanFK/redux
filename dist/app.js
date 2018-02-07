@@ -706,7 +706,7 @@ module.exports = __webpack_require__(8);
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_redux__ = __webpack_require__(9);
 
-
+__webpack_require__(24)
 
 function counter(state = 0, action){
     switch (action.type) {
@@ -719,19 +719,18 @@ function counter(state = 0, action){
     }
 }
 
-
 let store = Object(__WEBPACK_IMPORTED_MODULE_0_redux__["a" /* createStore */])(counter)
-
 
 store.subscribe(() => 
     console.log(store.getState())
 )
 
-store.dispatch({type: "INCREMENT"})
+document.querySelector("#inc").onclick = () => {
+    store.dispatch({type: "INCREMENT"})
+};
 
 store.dispatch({type: "INCREMENT"})
-
-store.dispatch({type: "HI"})
+store.dispatch({type: "INCREMENT"})
 
 
 
@@ -1326,6 +1325,12 @@ function applyMiddleware() {
     };
   };
 }
+
+/***/ }),
+/* 24 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "1f911bc3032defa919f188375f71198a.html";
 
 /***/ })
 /******/ ]);

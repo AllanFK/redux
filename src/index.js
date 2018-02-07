@@ -1,5 +1,5 @@
 import { createStore } from 'redux'
-
+require('file-loader!./index.html')
 
 function counter(state = 0, action){
     switch (action.type) {
@@ -12,17 +12,16 @@ function counter(state = 0, action){
     }
 }
 
-
 let store = createStore(counter)
-
 
 store.subscribe(() => 
     console.log(store.getState())
 )
 
-store.dispatch({type: "INCREMENT"})
+document.querySelector("#inc").onclick = () => {
+    store.dispatch({type: "INCREMENT"})
+};
 
 store.dispatch({type: "INCREMENT"})
-
-store.dispatch({type: "HI"})
+store.dispatch({type: "INCREMENT"})
 
